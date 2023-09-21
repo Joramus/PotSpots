@@ -5,10 +5,30 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var profileRouter = require('./routes/profile');
 var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
+var groupRouter = require('./routes/groups');
 
-var app = express();
+
+const livereload = require("livereload");
+const connectLivereload = require("connect-livereload");
+
+// open livereload high port and start to watch public directory for changes
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
+
+// ping browser on Express boot, once browser has reconnected and handshaken
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
+const app = express();
+
+// monkey patch every served HTML so they know of changes
+app.use(connectLivereload())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,9 +41,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/profile', profileRouter);
 app.use('/login', loginRouter);
-
+app.use('/register', registerRouter);
+app.use('/groups', groupRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
