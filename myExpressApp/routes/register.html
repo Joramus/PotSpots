@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Registrieren</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/components/register/register.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+ <script src="/main.js"></script>
+        <h1 id="registerHeading">REGISTRIEREN</h1>
+            <form method="post">
+                Email *
+                <br>
+                <input type="email" id="email" name="email" placeholder="E-Mail" required="required" class="inputfield">
+                <span id="error_email"></span>
+                <br>
+                Nutzername *
+                <br>
+                <input type="text" id="username" name="username" placeholder="Nutzername" required="required">
+                <span id="error_username"></span>
+                <br>
+                <a href="#" class="tooltip" tabindex="-1" style="color: black" data-tip="Anforderungen: Mindestens 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Zahl, 1 Sonderzeichen">Passwort *</a>
+                <br>
+                <input type="password" id="password" name="password" placeholder="Passwort" required="required" class="inputfield">
+                <span id="error_password"></span>
+                <br>
+                <a href="#" class="tooltip" tabindex="-1" style="color: black" data-tip="Anforderungen: Mindestens 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Zahl, 1 Sonderzeichen">Passwort Best&auml;tigen *</a>
+                <br>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Passwort Best&auml;tigen" required="required" class="inputfield">
+                <span id="password_compare_error"></span>
+                <br>
+                <span id="error_confirm_password"></span>
+                <br>
+                <span id="register_form_error"></span>
+                <br>
+                <input type="submit" value="Registrieren" class="button">
+                <br>
+            </form>
+
+
+</body>
+</html>
