@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "livereload": "^0.9.3",
+    "nodemon": "^3.0.1"
+  }
+}
